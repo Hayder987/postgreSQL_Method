@@ -137,7 +137,7 @@ SELECT * FROM student
   WHERE dob BETWEEN '2001-01-01' AND '2003-01-01';
 
   SELECT * FROM student
-  WHERE dob BETWEEN '2001-01-01' AND '2003-01-01' ORDER BY dob;
+  WHERE dob BETWEEN '2001-01-01' AND '2003-01-01' ORDER BY dob LIMIT 2;
 
   -- like case sensitive
   -- last value a search
@@ -155,3 +155,28 @@ SELECT * FROM student
   --  ILIKE case insensitive;
   SELECT * FROM student
    WHERE first_name ILIKE 'S%';
+
+  -- ----------- LIMIT for Pagination----------------------------
+  -- LIMIT
+  SELECT * FROM student LIMIT 10;
+  -- OFFSET / SKIP
+  SELECT * FROM student LIMIT 10 OFFSET 3;
+
+  -- pagination
+  SELECT * FROM student LIMIT 5 OFFSET 5*0;
+  SELECT * FROM student LIMIT 5 OFFSET 5*1;
+  SELECT * FROM student LIMIT 5 OFFSET 5*2;
+
+  ----- DELETE DATA----------
+  SELECT * FROM student;
+  
+  -- DELETE All Data
+  DELETE FROM student;
+
+  -- Delete sepecific data
+  DELETE FROM student
+   WHERE grade ='C';
+  -- doubble condition
+  DELETE FROM student
+   WHERE grade ='B' AND country = 'BD';
+
