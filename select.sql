@@ -39,7 +39,7 @@ VALUES
 
 INSERT INTO student
 (first_name, last_name, age, grade, course, email, dob, blood_group, country)
-VALUES ('Jony', 'ali', 26, 'A', 'nxt-2', NULL, '2024-01-25', 'O+', 'BD');
+VALUES ('Rokeya', 'ali', 26, 'A', 'nxt-2', NULL, '2024-01-25', 'O+', 'BD');
 
 -- get all value
 SELECT * from student;
@@ -168,6 +168,7 @@ SELECT * FROM student
   SELECT * FROM student LIMIT 5 OFFSET 5*2;
 
   ----- DELETE DATA----------
+  -- get all Data
   SELECT * FROM student;
   
   -- DELETE All Data
@@ -180,3 +181,13 @@ SELECT * FROM student
   DELETE FROM student
    WHERE grade ='B' AND country = 'BD';
 
+  --------  Update ---------------------------
+  --  update email by id single column
+  UPDATE student
+   SET email = 'default@gmail.com'
+   WHERE student_id = 76;
+
+  --  update email by id multi column
+  UPDATE student
+   SET email = 'default@gmail.com', age=30, grade='B'
+   WHERE student_id = 76;
