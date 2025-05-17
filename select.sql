@@ -114,3 +114,44 @@ SELECT * FROM student
 
 SELECT * FROM student
  WHERE email IS NOT NULL;
+
+--  Null-Coalescing
+SELECT COALESCE(email, 'not Provied') FROM student;
+SELECT COALESCE(email, 'not Provied') as "Email" ,blood_group ,age FROM student;
+
+-- Exploring IN, BETWEEN, LIKE, and ILIKE Operators in PostgreSQL
+
+-- IN--Multiploe or
+SELECT * FROM student
+ WHERE country IN ('BD', 'USA');
+
+-- NOT IN
+ SELECT * FROM student
+ WHERE country NOT IN ('BD', 'USA');
+
+-- BETWEEN
+ SELECT * FROM student
+  WHERE age BETWEEN 25 AND 26;
+
+  SELECT * FROM student
+  WHERE dob BETWEEN '2001-01-01' AND '2003-01-01';
+
+  SELECT * FROM student
+  WHERE dob BETWEEN '2001-01-01' AND '2003-01-01' ORDER BY dob;
+
+  -- like case sensitive
+  -- last value a search
+  SELECT * FROM student
+   WHERE first_name LIKE '%a';
+
+  -- first value a search
+  SELECT * FROM student
+   WHERE first_name LIKE 's%' ORDER BY first_name;
+
+    -- middle 2 oreder value a search
+  SELECT * FROM student
+   WHERE first_name LIKE '__y%' ORDER BY first_name;
+
+  --  ILIKE case insensitive;
+  SELECT * FROM student
+   WHERE first_name ILIKE 'S%';
