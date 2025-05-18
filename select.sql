@@ -191,3 +191,5 @@ SELECT * FROM student
   UPDATE student
    SET email = 'default@gmail.com', age=30, grade='B'
    WHERE student_id = 76;
+
+  

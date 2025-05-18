@@ -22,7 +22,7 @@ ALTER TABLE person2
  ALTER TABLE person2
   ALTER COLUMN user_name TYPE VARCHAR(50);
 
--- set constrains
+-- set Not Null
   ALTER TABLE person2
    ALTER COLUMN user_age set NOT NULL;
 
