@@ -49,6 +49,10 @@ SELECT * FROM post
 SELECT * FROM post as p
  JOIN "user" as u ON p.user_id = u.id;
 
+--  using use join its work on only common key id
+SELECT * FROM post
+JOIN "user" USING(user_id);
+
  SELECT * FROM "user"
  JOIN post ON post.user_id = "user".id;
 
