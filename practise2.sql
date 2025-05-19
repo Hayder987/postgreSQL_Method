@@ -90,8 +90,55 @@ SELECT department_name, round(avg(salary)) as avg_salary FROM departments
 SELECT extract(year FROM hire_date) as hire_year, count(*) AS hire_total FROM employees
 GROUP BY hire_year;
 
+
+
+-- Create New Table---------------------------------------------------------------------------------->
+-- Customers table
+CREATE TABLE customers (
+    customer_id SERIAL PRIMARY KEY,
+    customer_name VARCHAR(100)
+);
+
+-- Orders table
+CREATE TABLE orders (
+    order_id SERIAL PRIMARY KEY,
+    customer_id INT REFERENCES customers(customer_id),
+    amount DECIMAL(10, 2),
+    order_date DATE
+);
+
+-- Insert into customers
+INSERT INTO customers (customer_name) VALUES 
+('Alice'),
+('Bob'),
+('Charlie');
+
+-- Insert into orders
+INSERT INTO orders (customer_id, amount, order_date) VALUES
+(1, 100.00, '2023-01-01'),   
+(1, 200.00, '2022-02-15'),   
+(1, 150.00, '2022-03-10'),   
+(2, 80.00,  '2023-01-20'),   
+(2, 120.00, '2023-03-22'),   
+(3, 300.00, '2023-04-05');   
+
+SELECT * FROM customers;
+SELECT * FROM orders;
+DROP TABLE orders;
+
 -- Find customers who have placed more than 2 orders and calculate the total amount spent by 
 -- each of these customers.
 
---  TODO
- 
+SELECT customer_name as customer, count(customer_id) as total_order FROM customers
+JOIN orders USING(customer_id)
+GROUP BY customer_id
+ORDER BY customer_name
+
+-- Find the total amount of orders placed each month in the year 2022.
+SELECT extract(MONTH from order_date) as month_order, round(sum(amount)) as total_amount FROM orders
+WHERE extract(YEAR FROM order_date) = 2022
+GROUP BY month_order
+ORDER BY month_order;
+
+
+
