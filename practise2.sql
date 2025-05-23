@@ -1,4 +1,4 @@
--- Active: 1747477117878@@127.0.0.1@5432@test@public
+-- Active: 1747477117878@@127.0.0.1@5432@postgres@public
 
 -- Creating the employees table
 CREATE TABLE employees (
@@ -8,6 +8,7 @@ CREATE TABLE employees (
     salary DECIMAL(10, 2),
     hire_date DATE
 );
+CREATE DATABASE test2;
 
 -- Creating the departments table
 CREATE TABLE departments (
